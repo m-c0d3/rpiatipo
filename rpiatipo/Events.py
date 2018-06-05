@@ -45,8 +45,8 @@ class EventService:
         cert = (self.__crt, self.__pk)
         data = self.__toJson(type=event.type, data=event.data)
         response = requests.post(createURL, data, verify=False, cert=cert, headers=self.__headers)
-        payload = self.__toEvent(response.text)
-        return payload
+        event = self.__toEvent(data)
+        return event
 
     def getId(self, id):
         getURL = self.__server + '/events/' + id
@@ -55,7 +55,7 @@ class EventService:
         event = self.__toEvent(response.text)
         return event
 
-    def getType(self, type=None, page=1, size=2):
+    def getType(self, type=None, page=0, size=10):
         if (type != None):
             getURL = self.__server + '/events?type=' + str(type) + '&page=' + str(page) + '&size=' + str(size)
         else:
