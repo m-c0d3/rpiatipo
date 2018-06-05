@@ -2,7 +2,7 @@ import setuptools
 
 setuptools.setup(
     name="rpiatipo",
-    version="0.0.1",
+    version="0.0.2",
     author="Scott Morse",
     author_email="morsescott@hotmail.com",
     description="Event system",
